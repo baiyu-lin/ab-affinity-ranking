@@ -1,0 +1,37 @@
+# ---- Python 环境与缓存 ----
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# ---- 内部工作笔记（不入库）----
+planning/
+
+# ---- 压缩归档及备份（不入库）----
+/hajimina.zip
+/hajimina.zip.bak
+
+# ---- 内部文档与结果文件（保留在本地，不入库）----
+docs/hajimina-报告.docx
+predictions/hajimina-预测结果.xlsx
+predictions/初赛测评序列_v3.xlsx
+code/data/初赛测评序列_v3.xlsx
+archive_2026-08-08/predictions/评测指标_队伍rev2_TeamX.xlsx
+archive_2026-08-08/predictions/hajimina-预测结果_oldinst.xlsx
+archive_2026-08-08/predictions/readme.txt
+
+# ---- 训练日志（体积大，可重新生成）----
+code/training/struct_saprot_train.log
+code/training/struct_saprot_xattn_train.log
+
+# ---- 二进制工具（pandoc 本体，可按需重装）----
+planning/pandoc
+tools/pandoc
+
+# ---- 派生缓存（可由脚本重新生成）----
+code/extraction/structures/
+archive_2026-08-08/cache_iglm_ab_meta/
+
+# ---- 训练运行目录（消融/演示检查点体积大；最终模型已收于 models/）----
+code/training/runs/
+!code/training/runs-README.md

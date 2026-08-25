@@ -1,0 +1,123 @@
+{
+  "description": "Parameter registry for gating/activation units used in the Plan v3 affinity-ranking fusion model. See preparation/gating-activation-design.md for block wiring and preparation/plan-v4.md Part 2 for the architecture.",
+  "units": {
+    "tanh_gate_scalar": {
+      "type": "tanh_gate",
+      "gate_shape": "scalar",
+      "init": 0.0,
+      "used_in": "fusion-arm residual gate (GatedCrossAttention / GatedResidualFusion)",
+      "reference": "Flamingo GATED XATTN-DENSE (Alayrac et al., 2022)"
+    },
+    "tanh_gate_per_channel": {
+      "type": "tanh_gate",
+      "gate_shape": "per_channel",
+      "dim": 256,
+      "init": 0.0,
+      "used_in": "fusion-arm gate granularity micro-ablation",
+      "reference": "Flamingo tanh-gating + LayerScale per-channel granularity (Touvron et al., 2021)"
+    },
+    "geglu": {
+      "type": "gated_ffn",
+      "variant": "geglu",
+      "dim": 256,
+      "hidden_dim": 256,
+      "out_dim": 256,
+      "used_in": "DualBranchAdapter branch 2 (ablation A1)",
+      "reference": "GLU Variants (Shazeer, 2020)"
+    },
+    "swiglu": {
+      "type": "gated_ffn",
+      "variant": "swiglu",
+      "dim": 256,
+      "hidden_dim": 256,
+      "out_dim": 256,
+      "used_in": "DualBranchAdapter branch 2 (ablation A1)",
+      "reference": "GLU Variants (Shazeer, 2020); LLaMA/Qwen default"
+    },
+    "glu_sigmoid": {
+      "type": "gated_ffn",
+      "variant": "glu",
+      "dim": 256,
+      "hidden_dim": 256,
+      "out_dim": 256,
+      "used_in": "DualBranchAdapter branch 2 (ablation A1)",
+      "reference": "Original GLU (Dauphin et al., 2017)"
+    },
+    "reglu": {
+      "type": "gated_ffn",
+      "variant": "reglu",
+      "dim": 256,
+      "hidden_dim": 256,
+      "out_dim": 256,
+      "used_in": "DualBranchAdapter branch 2 (ablation A1)",
+      "reference": "GLU Variants (Shazeer, 2020)"
+    },
+    "bilinear": {
+      "type": "gated_ffn",
+      "variant": "bilinear",
+      "dim": 256,
+      "hidden_dim": 256,
+      "out_dim": 256,
+      "used_in": "DualBranchAdapter branch 2 (ablation A1)",
+      "reference": "GLU Variants (Shazeer, 2020)"
+    },
+    "gelu_ffn": {
+      "type": "plain_ffn",
+      "dim": 256,
+      "hidden_dim": 256,
+      "out_dim": 256,
+      "activation": "gelu",
+      "used_in": "A1 no-gate control",
+      "reference": "Plain GELU FFN control arm (gating-activation-design.md rev 2, ablation A1)"
+    },
+    "softmax_gate": {
+      "type": "projection_gate",
+      "dim": 256,
+      "out_dim": 256,
+      "gate": "softmax",
+      "used_in": "DualBranchAdapter branch 1 (ablation A2)",
+      "reference": "Competitive feature selection, softmax over channels (gating-activation-design.md rev 2)"
+    },
+    "sigmoid_gate": {
+      "type": "projection_gate",
+      "dim": 256,
+      "out_dim": 256,
+      "gate": "sigmoid",
+      "used_in": "DualBranchAdapter branch 1 (ablation A2)",
+      "reference": "Independent-channel gating control (gating-activation-design.md rev 2, ablation A2)"
+    },
+    "gelu": {
+      "type": "activation",
+      "name": "gelu",
+      "used_in": "MLP scoring head",
+      "reference": "Hendrycks & Gimpel, 2016"
+    },
+    "silu": {
+      "type": "activation",
+      "name": "silu",
+      "used_in": "activation ablation",
+      "reference": "Swish (Ramachandran et al., 2017)"
+    },
+    "relu": {
+      "type": "activation",
+      "name": "relu",
+      "used_in": "activation ablation (control)",
+      "reference": "Nair & Hinton, 2010"
+    }
+  },
+  "plan_blocks": {
+    "dual_branch_adapter": {
+      "gate": "softmax_gate",
+      "gau": "swiglu"
+    },
+    "gated_cross_attention": {
+      "residual_gate": "tanh_gate_scalar"
+    },
+    "gated_residual_fusion": {
+      "residual_gate": "tanh_gate_scalar"
+    },
+    "mlp_head": {
+      "activation": "gelu"
+    }
+  }
+}

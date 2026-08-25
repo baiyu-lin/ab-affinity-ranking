@@ -1,0 +1,126 @@
+{
+ "ab_clusters": [
+  1,
+  3,
+  17,
+  22,
+  31,
+  33,
+  45,
+  57,
+  67,
+  126,
+  204,
+  397,
+  655,
+  668,
+  672,
+  877,
+  936,
+  953,
+  988,
+  1056,
+  1070,
+  1124,
+  1148,
+  1177,
+  1222,
+  1264,
+  1274,
+  1344,
+  1441,
+  1650,
+  1701,
+  2543,
+  2657,
+  3069,
+  3080,
+  3155,
+  3447,
+  3464,
+  3510
+ ],
+ "rows": [
+  [
+   "14/rawat2022abcov_kd.csv",
+   26
+  ],
+  [
+   "14/rawat2022abcov_kd.csv",
+   43
+  ],
+  [
+   "14/rawat2022abcov_kd.csv",
+   66
+  ],
+  [
+   "14/rawat2022abcov_kd.csv",
+   71
+  ],
+  [
+   "14/rawat2022abcov_kd.csv",
+   91
+  ],
+  [
+   "14/rawat2022abcov_kd.csv",
+   98
+  ],
+  [
+   "14/rawat2022abcov_kd.csv",
+   99
+  ],
+  [
+   "2/shanehsazzadeh2023unlocking_kd_hher2_fab.csv",
+   2
+  ],
+  [
+   "2/shanehsazzadeh2023unlocking_kd_hher2_mab.csv",
+   2
+  ],
+  [
+   "2/shanehsazzadeh2023unlocking_zerokd_trastuzumab.csv",
+   1
+  ],
+  [
+   "2/shanehsazzadeh2023unlocking_zerokd_trastuzumab.csv",
+   34
+  ],
+  [
+   "2/shanehsazzadeh2023unlocking_zerokd_trastuzumab.csv",
+   118
+  ],
+  [
+   "2/shanehsazzadeh2023unlocking_zerokd_trastuzumab.csv",
+   153
+  ],
+  [
+   "2/shanehsazzadeh2023unlocking_zerokd_trastuzumab.csv",
+   227
+  ],
+  [
+   "2/shanehsazzadeh2023unlocking_zerokd_trastuzumab.csv",
+   397
+  ],
+  [
+   "2/shanehsazzadeh2023unlocking_zerokd_trastuzumab.csv",
+   414
+  ]
+ ],
+ "stats": {
+  "benchmark_antibodies": 40,
+  "benchmark_with_hit": 40,
+  "exact_hit_rows": 64,
+  "clusters_removed": 39,
+  "rows_removed_total": 101,
+  "rows_removed_with_fitness": 101,
+  "corpus_rows_total": 641454,
+  "cluster_expansion": true,
+  "per_source": {
+   "4/AbRank_dataset.csv": 85,
+   "14/rawat2022abcov_kd.csv": 7,
+   "2/shanehsazzadeh2023unlocking_zerokd_trastuzumab.csv": 7,
+   "2/shanehsazzadeh2023unlocking_kd_hher2_fab.csv": 1,
+   "2/shanehsazzadeh2023unlocking_kd_hher2_mab.csv": 1
+  }
+ }
+}

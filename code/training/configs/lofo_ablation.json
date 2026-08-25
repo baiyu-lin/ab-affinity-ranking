@@ -1,0 +1,12 @@
+{
+  "model": {"interaction": "cross", "fusion": "bilinear", "antigen_blind": false},
+  "lambda_aux": 0.2,
+  "epochs": 10,
+  "steps_per_epoch": 500,
+  "list_size": 20,
+  "batch_tokens": 65536,
+  "seed": 0,
+  "num_threads": 8,
+  "cv": {"strategy": "lofo", "holdout": ["11/kothiwal2025htp_DCC_spr.csv"]},
+  "output_dir": "training/runs/lofo_kothiwal_DCC_cross_bilinear"
+}

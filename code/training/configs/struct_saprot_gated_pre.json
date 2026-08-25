@@ -1,0 +1,18 @@
+{
+  "model": {"interaction": "cross", "fusion": "bilinear", "antigen_blind": false,
+            "struct_ab_dim": 1280, "struct_fusion": "gated_pre"},
+  "lambda_aux": 0.0,
+  "rank_only_factor": 0.5,
+  "epochs": 10,
+  "steps_per_epoch": 1500,
+  "lr": 3e-4,
+  "fusion_lr": 1e-3,
+  "early_stop_patience": 3,
+  "device": "cuda",
+  "cv": {"strategy": "all", "monitor_groups": 100},
+  "output_dir": "training/runs/struct_saprot_gated_pre_s0",
+  "seed": 0,
+  "num_threads": 8,
+  "data": {"struct_token_cache": "extraction/cache_struct_saprot_tok",
+           "exclude_json": "data_pipeline/output/deleak_v3_exclude.json"}
+}

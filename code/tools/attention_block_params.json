@@ -1,0 +1,102 @@
+{
+  "description": "Parameter registry for the attention-level blocks of the affinity-ranking model. Gating/activation units are referenced by name from gating_activation_params.json for unified management. Plan v4 (antigen-conditioned, update_architecture.txt): residual_geglu_adapter / preln_cross_attention / attn_pool / bilinear_gate_fusion / head_v4. Plan v3 blocks kept for ablation. See preparation/plan-v4.md v4.",
+  "dims": {
+    "antiberty": 512,
+    "esm2": 1280,
+    "iglm": 512,
+    "progen": 1024,
+    "common": 256
+  },
+  "blocks": {
+    "adapter_antiberty": {
+      "type": "residual_geglu_adapter",
+      "dim": 512,
+      "out_dim": 256,
+      "hidden_dim": 512,
+      "dropout": 0.1,
+      "gau": "geglu",
+      "used_in": "Plan v4 antibody tower adapter: AntiBERTy 512 -> 256 (Linear -> LN -> GEGLU-FFN + residual)"
+    },
+    "adapter_esm2": {
+      "type": "residual_geglu_adapter",
+      "dim": 1280,
+      "out_dim": 256,
+      "hidden_dim": 512,
+      "dropout": 0.1,
+      "gau": "geglu",
+      "used_in": "Plan v4 antigen tower adapter: ESM-2 1280 -> 256 (same parameterization as adapter_antiberty)"
+    },
+    "interaction_ag_ab": {
+      "type": "preln_cross_attention",
+      "q_dim": 256,
+      "kv_dim": 256,
+      "common_dim": 256,
+      "num_heads": 4,
+      "dropout": 0.1,
+      "used_in": "Plan v4 interaction: P_ag' = P_ag + Drop(CrossAttn(Q=LN(P_ag), KV=LN(P_ab))); antigen-as-query"
+    },
+    "attn_pool_256": {
+      "type": "attn_pool",
+      "dim": 256,
+      "attn_dim": 128,
+      "used_in": "Plan v4: A_pool = AttnPool(P_ag'), B_pool = AttnPool(P_ab)"
+    },
+    "bilinear_gate_256": {
+      "type": "bilinear_gate_fusion",
+      "dim": 256,
+      "used_in": "Plan v4 fusion: gate = sigmoid(W(LN(A_pool) (*) LN(B_pool))); F = gate*A + (1-gate)*B"
+    },
+    "head_v4": {
+      "type": "affinity_head",
+      "dim": 256,
+      "hidden_dim": 64,
+      "bypass_dim": 0,
+      "dropout": 0.1,
+      "activation": "gelu",
+      "used_in": "Plan v4 scoring head: F -> 64 -> GELU -> Dropout -> 1 (bypass_dim=2 arm keeps the IgLM nll bypass as ablation)"
+    },
+    "adapter_iglm": {
+      "type": "dual_branch_adapter",
+      "dim": 512,
+      "out_dim": 256,
+      "gate": "softmax_gate",
+      "gau": "swiglu",
+      "used_in": "IgLM stream adapter: 512 -> 256 (Plan v3, kept for A1 ablation)"
+    },
+    "adapter_progen": {
+      "type": "dual_branch_adapter",
+      "dim": 1024,
+      "out_dim": 256,
+      "gate": "softmax_gate",
+      "gau": "swiglu",
+      "used_in": "ProGen2-small stream adapter: 1024 -> 256 (Plan v3, non-mainline)"
+    },
+    "gated_cross_attention": {
+      "type": "gated_cross_attention",
+      "q_dim": 256,
+      "kv_dim": 256,
+      "common_dim": 256,
+      "num_heads": 8,
+      "dropout": 0.1,
+      "residual_gate": "tanh_gate_scalar",
+      "used_in": "Plan v3 fusion arm (kept for ablation): zero-init tanh-gated cross-attention"
+    },
+    "gated_residual_fusion": {
+      "type": "gated_residual_fusion",
+      "q_dim": 256,
+      "kv_dim": 256,
+      "common_dim": 256,
+      "residual_gate": "tanh_gate_scalar",
+      "used_in": "Plan v3 fusion arm (kept for ablation): cheapest gated linear injection"
+    },
+    "affinity_head": {
+      "type": "affinity_head",
+      "dim": 256,
+      "hidden_dim": 128,
+      "bypass_dim": 2,
+      "dropout": 0.1,
+      "activation": "gelu",
+      "used_in": "Plan v3 MLP scoring head; bypass = [log ppl_iglm, log ppl_progen]"
+    }
+  }
+}

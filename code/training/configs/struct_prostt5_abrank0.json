@@ -1,0 +1,13 @@
+{
+  "model": {"interaction": "cross", "fusion": "bilinear", "antigen_blind": false,
+            "struct_ab_dim": 1024, "struct_ag_dim": 1024},
+  "lambda_aux": 0.0,
+  "epochs": 10,
+  "steps_per_epoch": 500,
+  "seed": 0,
+  "num_threads": 8,
+  "device": "cuda",
+  "cv": {"strategy": "abrank", "fold": 0, "n_folds": 5},
+  "output_dir": "training/runs/struct_prostt5_abrank0_s0",
+  "data": {"struct_cache": "extraction/cache_struct_prostt5"}
+}

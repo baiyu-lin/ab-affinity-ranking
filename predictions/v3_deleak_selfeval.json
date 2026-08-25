@@ -1,0 +1,21 @@
+{
+ "rows": 40,
+ "groups": {
+  "1": {
+   "ensemble_spearman": 0.3954887218045112,
+   "score_deleak_final_s0": 0.28721804511278193,
+   "score_deleak_final_s1": 0.3037593984962406,
+   "score_deleak_final_s2": 0.15488721804511277
+  },
+  "2": {
+   "ensemble_spearman": 0.9383458646616539,
+   "score_deleak_final_s0": 0.7503759398496239,
+   "score_deleak_final_s1": 0.8736842105263156,
+   "score_deleak_final_s2": 0.9097744360902256
+  }
+ },
+ "mean_ensemble_spearman": 0.6669172932330826,
+ "mean_score_deleak_final_s0": 0.5187969924812029,
+ "mean_score_deleak_final_s1": 0.5887218045112781,
+ "mean_score_deleak_final_s2": 0.5323308270676692
+}

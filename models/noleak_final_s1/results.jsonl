@@ -1,0 +1,10 @@
+{"fold": "all__mon100", "epoch": 0, "train_loss": 2.035099648475647, "val_spearman": 0.5726218110115693, "n_val_groups": 45, "lr": 0.00029795419551040833, "secs": 26.5}
+{"fold": "all__mon100", "epoch": 1, "train_loss": 1.9733343970775605, "val_spearman": 0.6557975265258191, "n_val_groups": 45, "lr": 0.00028192106268097334, "secs": 23.8}
+{"fold": "all__mon100", "epoch": 2, "train_loss": 1.9332006373405457, "val_spearman": 0.705077325539499, "n_val_groups": 45, "lr": 0.00025159223574386114, "secs": 23.9}
+{"fold": "all__mon100", "epoch": 3, "train_loss": 1.9075190314451853, "val_spearman": 0.7268872601382838, "n_val_groups": 45, "lr": 0.0002102543136979454, "secs": 24.5}
+{"fold": "all__mon100", "epoch": 4, "train_loss": 1.8829992924928665, "val_spearman": 0.7443697648516813, "n_val_groups": 45, "lr": 0.00016238690182084986, "secs": 23.1}
+{"fold": "all__mon100", "epoch": 5, "train_loss": 1.8505447914203008, "val_spearman": 0.758786566756135, "n_val_groups": 45, "lr": 0.00011317717692888012, "secs": 24.7}
+{"fold": "all__mon100", "epoch": 6, "train_loss": 1.8516358326276143, "val_spearman": 0.770834074674286, "n_val_groups": 45, "lr": 6.795777628163599e-05, "secs": 25.1}
+{"fold": "all__mon100", "epoch": 7, "train_loss": 1.8251571179231008, "val_spearman": 0.7763796642697494, "n_val_groups": 45, "lr": 3.162892359054098e-05, "secs": 24.5}
+{"fold": "all__mon100", "epoch": 8, "train_loss": 1.8308777660528819, "val_spearman": 0.7770213226660962, "n_val_groups": 45, "lr": 8.127413744904804e-06, "secs": 23.2}
+{"fold": "all__mon100", "epoch": 9, "train_loss": 1.843960144519806, "val_spearman": 0.7778043303218982, "n_val_groups": 45, "lr": 0.0, "secs": 24.4}

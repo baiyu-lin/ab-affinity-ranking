@@ -1,0 +1,10 @@
+{
+  "model": {"interaction": "cross", "fusion": "bilinear", "antigen_blind": false},
+  "lambda_aux": 0.0,
+  "epochs": 10,
+  "steps_per_epoch": 500,
+  "seed": 0,
+  "num_threads": 8,
+  "cv": {"strategy": "abrank", "fold": 0, "n_folds": 5},
+  "output_dir": "training/runs/abrank_fold0_cross_bilinear"
+}

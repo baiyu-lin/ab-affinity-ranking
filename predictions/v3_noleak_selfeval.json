@@ -1,0 +1,21 @@
+{
+ "rows": 40,
+ "groups": {
+  "1": {
+   "ensemble_spearman": 0.04962406015037594,
+   "score_noleak_final_s0": 0.07218045112781954,
+   "score_noleak_final_s1": -0.06917293233082707,
+   "score_noleak_final_s2": 0.0
+  },
+  "2": {
+   "ensemble_spearman": 0.9308270676691727,
+   "score_noleak_final_s0": 0.8706766917293233,
+   "score_noleak_final_s1": 0.9022556390977443,
+   "score_noleak_final_s2": 0.9293233082706768
+  }
+ },
+ "mean_ensemble_spearman": 0.4902255639097743,
+ "mean_score_noleak_final_s0": 0.4714285714285714,
+ "mean_score_noleak_final_s1": 0.4165413533834586,
+ "mean_score_noleak_final_s2": 0.4646616541353384
+}
