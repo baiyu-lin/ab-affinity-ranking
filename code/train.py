@@ -8,7 +8,7 @@ Runs the full retraining pipeline on the GPU instance:
   2. training/train.py x 3 seeds    -- v5 recipe (ListMLE, frozen PLM towers,
      ~1.86M trainable params) with data.exclude_json applied
 
-Prerequisites (see docs/算法训练文档.md):
+Prerequisites (see training/README.md):
   - data_pipeline 01-07 outputs under data_pipeline/output/
   - embedding caches under extraction/cache_antiberty + cache_esm2
     (extraction caches are reused as-is: de-leakage only removes rows)
